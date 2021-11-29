@@ -53,6 +53,10 @@ function Game() {
     setSquares(squaresCopy)
   }
 
+  function restart() {
+    setSquares(Array(9).fill(null))
+  }
+
   return (
     <div>
       <div>
@@ -60,6 +64,9 @@ function Game() {
       </div>
       <div className='game'>
         <Board squares={squares} onClick={selectSquare} />
+      </div>
+      <div>
+        <button onClick={restart}>Restart</button>
       </div>
     </div>
 
