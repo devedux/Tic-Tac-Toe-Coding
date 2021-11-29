@@ -1,24 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
+import * as React from 'react';
 import './App.css';
+
+type BoardType = {
+  squares: any[], 
+  selectSquare: (step: number) => void
+}
+function Board({squares, selectSquare}: BoardType) {
+  function renderSquare(i: number) {
+    return (
+      <button className='board-square' onClick={() => selectSquare(i)}>
+        {squares[i]}
+      </button>
+    )
+  }
+  return (
+    <div className='board'>
+      <div className='board-row'>
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
+      </div>
+      <div className='board-row'>
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </div>
+      <div className='board-row'>
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </div>
+    </div>
+  )
+}
+
+function Game() {
+  return (
+    <div>
+      a
+      <Board squares={[]} selectSquare={(step) => console.log(step)} />
+    </div>
+  )
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Game />
     </div>
   );
 }
