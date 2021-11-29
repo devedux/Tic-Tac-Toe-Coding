@@ -36,8 +36,7 @@ function Board({squares, selectSquare}: BoardType) {
 
 function Game() {
   return (
-    <div>
-      a
+    <div className='game'>
       <Board squares={[]} selectSquare={(step) => console.log(step)} />
     </div>
   )
