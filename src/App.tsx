@@ -2,9 +2,9 @@ import * as React from 'react';
 import './App.css';
 import { useLocalStorageState } from './utils';
 
-type SquaresType = any[]
+type SquaresData = any[]
 type BoardType = {
-  squares: SquaresType, 
+  squares: SquaresData, 
   onClick: (i: number) => void
 }
 function Board({squares, onClick}: BoardType) {
@@ -81,11 +81,11 @@ function App() {
   );
 }
 
-function calculateNextValue(squares: SquaresType) {
+function calculateNextValue(squares: SquaresData) {
   return squares.filter(Boolean).length % 2 === 0 ? 'X' : '0'
 }
 
-function calculateWinner(squares: SquaresType) {
+function calculateWinner(squares: SquaresData) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -105,8 +105,8 @@ function calculateWinner(squares: SquaresType) {
   return null
 }
 
-type WinnerType = string | null
-function calculateStatus(winner: WinnerType, squares: SquaresType, nextValue: string) {
+type WinnerData = string | null
+function calculateStatus(winner: WinnerData, squares: SquaresData, nextValue: string) {
   return winner
     ? `Winner: ${winner}`
     : squares.every(Boolean)
